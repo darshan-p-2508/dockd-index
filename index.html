@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dockd | Find Parking. Make Space. Earn More.</title>
+  <meta name="description" content="Dockd makes parking simpler. Discover and book private parking spaces for cars and bikes, with EV charging where available. List your unused parking space and earn." />
+  <meta name="theme-color" content="#f7f7f2" />
+  <meta property="og:title" content="Dockd | Parking, Reimagined." />
+  <meta property="og:description" content="Find your space. Make your space count. A smarter way to park." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f7f2; --dark: #17231d; --muted: #707a72;
+      --green: #c8f169; --green-dark: #9bc83e; --white: #fff; --border: #e7e9e1;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(1160px, 90%); margin: auto; }
+    nav { height: 84px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+    .logo { font-family: 'Manrope', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -2px; }
+    .logo span { color: #88b832; }
+    .nav-right { display: flex; align-items: center; gap: 30px; font-size: 13px; font-weight: 600; }
+    .nav-cta { background: var(--dark); color: white; padding: 12px 21px; border-radius: 30px; }
+    .hero { padding: 105px 0 85px; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 65px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; background: #edf3e4; color: #56772b; padding: 8px 14px; border-radius: 30px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 27px; }
+    .dot { height: 7px; width: 7px; background: #91bd40; border-radius: 50%; }
+    h1 { font-family: 'Manrope', sans-serif; font-size: clamp(43px, 5.6vw, 70px); line-height: 1.09; letter-spacing: -3.8px; font-weight: 800; margin-bottom: 24px; }
+    h1 span { color: #83ae39; }
+    .hero-text { font-size: 17px; color: var(--muted); max-width: 490px; line-height: 1.8; margin-bottom: 32px; }
+    .buttons { display: flex; gap: 13px; flex-wrap: wrap; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; padding: 15px 24px; border-radius: 35px; font-size: 13px; font-weight: 700; transition: .2s ease; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-dark { background: var(--dark); color: white; }
+    .btn-light { border: 1px solid #d6dbd1; background: transparent; }
+    .hero-visual { min-height: 410px; background: #e8eddf; border-radius: 26px; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+    .parking-card { width: 78%; background: white; padding: 24px; border-radius: 20px; box-shadow: 0 20px 60px rgba(23,35,29,.09); position: relative; z-index: 2; transform: rotate(-3deg); }
+    .parking-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 23px; }
+    .parking-label { font-size: 11px; color: var(--muted); }
+    .available { background: #e9f6d5; color: #5c8128; padding: 6px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+    .parking-icon { height: 140px; border-radius: 13px; background: #f0f3ea; display: flex; justify-content: center; align-items: center; font-size: 72px; margin-bottom: 18px; }
+    .parking-card h3 { font-family: 'Manrope', sans-serif; font-size: 20px; margin-bottom: 4px; }
+    .parking-card p { color: var(--muted); font-size: 12px; }
+    .parking-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .parking-bottom strong { font-size: 18px; }
+    .parking-bottom small { font-size: 10px; color: var(--muted); }
+    .mini-tag { font-size: 10px; font-weight: 700; background: var(--green); padding: 8px 12px; border-radius: 20px; }
+    section { padding: 90px 0; }
+    .section-heading { text-align: center; max-width: 650px; margin: 0 auto 48px; }
+    .section-heading h2 { font-family: 'Manrope', sans-serif; font-size: clamp(31px, 4vw, 45px); line-height: 1.2; letter-spacing: -1.7px; margin-bottom: 15px; }
+    .section-heading p { color: var(--muted); font-size: 15px; }
+    .audience { background: #fff; }
+    .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .audience-card { border: 1px solid var(--border); border-radius: 22px; padding: 38px; background: #fbfcf9; }
+    .card-icon { width: 53px; height: 53px; display: grid; place-items: center; background: var(--green); border-radius: 15px; font-size: 25px; margin-bottom: 25px; }
+    .audience-card h3 { font-family: 'Manrope', sans-serif; font-size: 24px; margin-bottom: 12px; }
+    .audience-card p { color: var(--muted); font-size: 14px; margin-bottom: 23px; }
+    .audience-card ul { list-style: none; display: grid; gap: 12px; font-size: 13px; font-weight: 600; }
+    .audience-card li::before { content: "✓"; color: #79a72c; font-weight: 800; margin-right: 10px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .step { border-top: 2px solid var(--green-dark); padding-top: 23px; }
+    .step-number { color: #88ad4d; font-size: 12px; font-weight: 800; letter-spacing: 2px; margin-bottom: 17px; }
+    .step h3 { font-size: 19px; margin-bottom: 10px; }
+    .step p { color: var(--muted); font-size: 14px; }
+    .ev-section { background: var(--dark); color: white; border-radius: 26px; padding: 65px; display: flex; align-items: center; justify-content: space-between; gap: 35px; }
+    .ev-section h2 { font-family: 'Manrope', sans-serif; font-size: clamp(30px, 4vw, 44px); line-height: 1.2; letter-spacing: -1.5px; margin-bottom: 17px; }
+    .ev-section p { color: #b6c1b8; max-width: 500px; font-size: 14px; }
+    .ev-symbol { min-width: 120px; min-height: 120px; background: var(--green); color: var(--dark); border-radius: 50%; display: grid; place-items: center; font-size: 52px; }
+    .final-cta { text-align: center; padding: 100px 20px; }
+    .final-cta h2 { font-family: 'Manrope', sans-serif; font-size: clamp(35px, 5vw, 55px); letter-spacing: -2px; line-height: 1.15; margin-bottom: 18px; }
+    .final-cta p { color: var(--muted); margin-bottom: 28px; }
+    .coming-soon { display: inline-block; border: 1px solid #d9dfd1; border-radius: 30px; padding: 8px 16px; font-size: 11px; font-weight: 700; letter-spacing: 1px; margin-top: 27px; }
+    footer { border-top: 1px solid var(--border); padding: 30px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .footer-inner p { color: var(--muted); font-size: 12px; }
+    .footer-links { display: flex; gap: 22px; font-size: 12px; font-weight: 600; }
+    @media (max-width: 760px) {
+      nav { height: 72px; }
+      .nav-right { gap: 12px; font-size: 11px; }
+      .nav-right .nav-cta { padding: 10px 13px; }
+      .hero { grid-template-columns: 1fr; padding: 65px 0; gap: 42px; }
+      h1 { letter-spacing: -2.5px; }
+      .hero-visual { min-height: 350px; }
+      .audience-grid, .steps { grid-template-columns: 1fr; }
+      section { padding: 65px 0; }
+      .audience-card { padding: 28px; }
+      .ev-section { padding: 38px 27px; flex-direction: column; align-items: flex-start; }
+      .ev-symbol { min-width: 80px; min-height: 80px; font-size: 36px; }
+      .final-cta { padding: 75px 10px; }
+    }
+    @media (max-width: 380px) {
+      .nav-right > a:first-child { display: none; }
+      .buttons .btn { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <a href="#" class="logo">dockd<span>.</span></a>
+      <div class="nav-right">
+        <a href="#how-it-works">How it works</a>
+        <a href="#owners">For owners</a>
+        <a href="#contact" class="nav-cta">Get in touch ↗</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <div class="container">
+      <div class="hero">
+        <div>
+          <div class="eyebrow"><span class="dot"></span>A smarter way to park</div>
+          <h1>Your space.<br>Their parking.<br><span>Everyone wins.</span></h1>
+          <p class="hero-text">
+            Parking shouldn't be complicated. Dockd connects drivers
+            looking for a parking spot with people who have space to
+            share. Simple bookings, smarter spaces and a better way
+            to move around.
+          </p>
+          <div class="buttons">
+            <a href="#contact" class="btn btn-dark">Find your parking ↗</a>
+            <a href="#owners" class="btn btn-light">Earn from your space</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="parking-card">
+            <div class="parking-top">
+              <span class="parking-label">YOUR NEXT PARKING SPOT</span>
+              <span class="available">SPACE AVAILABLE</span>
+            </div>
+            <div class="parking-icon">🚗</div>
+            <h3>Parking, made easy.</h3>
+            <p>Convenient spaces. Right where you need them.</p>
+            <div class="parking-bottom">
+              <div>
+                <strong>dockd.</strong><br>
+                <small>Find your spot. Move freely.</small>
+              </div>
+              <span class="mini-tag">SMARTER PARKING</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="audience" id="owners">
+      <div class="container">
+        <div class="section-heading">
+          <h2>One platform. Two sides of smarter parking.</h2>
+          <p>Whether you're searching for a place to park or have an unused spot to share, Dockd brings both sides together.</p>
+        </div>
+
+        <div class="audience-grid">
+          <div class="audience-card">
+            <div class="card-icon">🚘</div>
+            <h3>For drivers</h3>
+            <p>Spend less time searching and more time getting where you need to be. Discover parking spaces that work for your journey.</p>
+            <ul>
+              <li>Find car and bike parking</li>
+              <li>Discover convenient locations</li>
+              <li>Book a parking space</li>
+              <li>Explore EV charging options where available</li>
+            </ul>
+          </div>
+
+          <div class="audience-card">
+            <div class="card-icon">🏡</div>
+            <h3>For space owners</h3>
+            <p>Have an unused parking spot at your home, apartment or commercial property? Turn that empty space into an earning opportunity.</p>
+            <ul>
+              <li>List unused private parking spaces</li>
+              <li>Make your available space discoverable</li>
+              <li>Earn from your unused parking area</li>
+              <li>Help make parking more accessible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Making parking work better.</h2>
+          <p>A simple idea that makes better use of the spaces that already exist.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">01 / DISCOVER</div>
+            <h3>Find a space</h3>
+            <p>Drivers discover available parking spaces that suit their location and vehicle.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">02 / BOOK</div>
+            <h3>Park with ease</h3>
+            <p>Choose a suitable space and book it for your parking needs.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">03 / EARN</div>
+            <h3>Share and earn</h3>
+            <p>Space owners make their unused parking spots available and earn from them.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="ev-section">
+        <div>
+          <div class="eyebrow">PARKING MEETS ELECTRIC MOBILITY</div>
+          <h2>A little more charge<br>for the journey ahead.</h2>
+          <p>Looking for an EV-friendly parking spot? Dockd aims to bring parking and electric vehicle charging together, with charging-enabled spaces available where offered by participating owners.</p>
+        </div>
+        <div class="ev-symbol">⚡</div>
+      </div>
+    </div>
+
+    <section class="final-cta" id="contact">
+      <div class="container">
+        <div class="eyebrow"><span class="dot"></span>Something smarter is coming</div>
+        <h2>The future of parking<br>has a place for everyone.</h2>
+        <p>Be among the first to discover Dockd. Have a parking space to share? We'd love to hear from you.</p>
+        <div class="buttons" style="justify-content:center;">
+          <a href="mailto:hello@dockd.co.in?subject=I'm%20interested%20in%20Dockd" class="btn btn-dark">Connect with Dockd ↗</a>
+        </div>
+        <div class="coming-soon">DOCKD IS COMING SOON</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#" class="logo">dockd<span>.</span></a>
+        <p>© <span id="year"></span> Dockd. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="mailto:hello@dockd.co.in">Contact</a>
+          <a href="#owners">List your space</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
